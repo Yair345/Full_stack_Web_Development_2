@@ -1,4 +1,4 @@
-import { userStorage } from '../storage/userStorage.js';
+import { userStorage } from '../storage/user-storage.js';
 
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault();

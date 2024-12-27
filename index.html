@@ -1,68 +1,68 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>משחקים ופאזלים - דף הבית</title>
-    <link rel="stylesheet" href="css/main-styles.css">
-    <link rel="stylesheet" href="css/auth-styles.css">
-    <!--
-    <script>
-        // Check if user is already logged in
-        window.addEventListener('DOMContentLoaded', () => {
-            const userToken = localStorage.getItem('userToken');
-            if (!userToken) {
-                window.location.href = 'pages/login.html';
-            }
-        });
-    </script>
--->
-</head>
-<body>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Games and Puzzles - Home</title>
+    <link rel="stylesheet" href="css/main-styles.css" />
+    <link rel="stylesheet" href="css/auth-styles.css" />
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <h1>ברוכים הבאים למשחקייה</h1>
-            <nav>
-                <button id="gamesBtn" onclick="window.location.href='pages/games.html'">משחקים</button>
-                <button id="profileBtn">הפרופיל שלי</button>
-                <button id="logoutBtn">התנתק</button>
-            </nav>
-        </header>
+      <header>
+        <h1>Welcome to the Game Center</h1>
+        <nav>
+          <button
+            id="gamesBtn"
+            onclick="window.location.href='pages/games.html'"
+          >
+            Games
+          </button>
+          <button id="profileBtn">My Profile</button>
+          <button id="logoutBtn">Logout</button>
+        </nav>
+      </header>
 
-        <main>
-            <section class="welcome-section">
-                <h2>ברוך הבא, <span id="userName">אורח</span>!</h2>
-                <div class="user-stats">
-                    <h3>הסטטיסטיקות שלך</h3>
-                    <div id="userStats">
-                        <p>משחקים ששיחקת: <span id="gamesPlayed">0</span></p>
-                        <p>ניקוד כולל: <span id="totalScore">0</span></p>
-                        <p>זמן משחק כולל: <span id="totalTime">0</span> דקות</p>
-                    </div>
-                </div>
-            </section>
+      <main>
+        <section class="welcome-section">
+          <h2>Welcome, <span id="userName">Guest</span>!</h2>
+          <div class="user-stats">
+            <h3>Your Statistics</h3>
+            <div id="userStats">
+              <p>Games Played: <span id="gamesPlayed">0</span></p>
+              <p>Total Score: <span id="totalScore">0</span></p>
+              <p>Total Play Time: <span id="totalTime">0</span> minutes</p>
+            </div>
+          </div>
+        </section>
 
-            <section class="featured-games">
-                <h2>משחקים מומלצים</h2>
-                <div class="games-grid">
-                    <div class="game-card" onclick="window.location.href='pages/games/game1.html'">
-                        <h3>משחק 1</h3>
-                        <p>משחק אקשן מרתק עם אנימציות</p>
-                    </div>
-                    <div class="game-card" onclick="window.location.href='pages/games/game2.html'">
-                        <h3>משחק 2</h3>
-                        <p>משחק לוגי מאתגר</p>
-                    </div>
-                </div>
-            </section>
-        </main>
+        <section class="featured-games">
+          <h2>Featured Games</h2>
+          <div class="games-grid">
+            <div
+              class="game-card"
+              onclick="window.location.href='pages/games/game1.html'"
+            >
+              <h3>Classic Snake</h3>
+              <p>Exciting action game with animations</p>
+            </div>
+            <div
+              class="game-card"
+              onclick="window.location.href='pages/games/game2.html'"
+            >
+              <h3>Game 2</h3>
+              <p>Challenging logic game</p>
+            </div>
+          </div>
+        </section>
+      </main>
 
-        <footer>
-            <p>© 2024 משחקייה - כל הזכויות שמורות</p>
-        </footer>
+      <footer>
+        <p>© 2024 Game Center - All Rights Reserved</p>
+      </footer>
     </div>
 
     <script src="js/auth/login-logic.js"></script>
     <script src="js/storage/user-storage.js"></script>
-</body>
+  </body>
 </html>
