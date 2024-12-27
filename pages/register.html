@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הרשמה - משחקים</title>
+    <link rel="stylesheet" href="../css/main-styles.css">
+    <link rel="stylesheet" href="../css/auth-styles.css">
+</head>
+<body>
+    <div class="auth-container">
+        <form id="registerForm" class="auth-form">
+            <h2>הרשמה</h2>
+            <div class="form-group">
+                <label for="fullname">שם מלא:</label>
+                <input type="text" id="fullname" name="fullname" required>
+            </div>
+            <div class="form-group">
+                <label for="username">שם משתמש:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">אימייל:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">סיסמה:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">אימות סיסמה:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+            <div class="error-message" id="errorMsg"></div>
+            <button type="submit">הירשם</button>
+            <p class="auth-link">כבר יש לך חשבון? <a href="login.html">התחבר כאן</a></p>
+        </form>
+    </div>
+    <script src="../js/auth/register-logic.js"></script>
+</body>
+</html>

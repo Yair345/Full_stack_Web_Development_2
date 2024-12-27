@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תופסת מכשולים</title>
+    <link rel="stylesheet" href="../../css/main-styles.css">
+    <link rel="stylesheet" href="../../css/games/game1-styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <div class="score">ניקוד: <span id="score">0</span></div>
+            <div class="time">זמן: <span id="time">60</span></div>
+            <div class="level">שלב: <span id="level">1</span></div>
+        </div>
+
+        <div id="gameArea" class="game-area">
+            <div id="player" class="player"></div>
+            <!-- מכשולים יתווספו דינמית -->
+        </div>
+
+        <div id="gameOverlay" class="game-overlay hidden">
+            <div class="overlay-content">
+                <h2>המשחק נגמר!</h2>
+                <p>הניקוד הסופי שלך: <span id="finalScore">0</span></p>
+                <button id="restartBtn">שחק שוב</button>
+                <a href="../games.html" class="menu-button">חזרה לתפריט</a>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../../js/games/game1.js"></script>
+</body>
+</html>

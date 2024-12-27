@@ -1,0 +1,130 @@
+.main-header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#logoutBtn {
+    padding: 0.5rem 1rem;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.user-stats {
+    margin: 2rem 0;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.stat-card {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.game-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.game-card:hover:not(.disabled) {
+    transform: translateY(-5px);
+}
+
+.game-preview {
+    width: 100%;
+    height: 200px;
+    background-color: #f8f9fa;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.game-card h3 {
+    padding: 1rem;
+    margin: 0;
+}
+
+.game-card p {
+    padding: 0 1rem 1rem;
+    color: #666;
+}
+
+.play-button {
+    display: block;
+    padding: 0.75rem;
+    background-color: #2ecc71;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    margin: 1rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.play-button:hover {
+    background-color: #27ae60;
+}
+
+.disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.coming-soon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ecf0f1;
+}
+
+.coming-soon span {
+    font-size: 1.5rem;
+    color: #7f8c8d;
+}
+
+@media (max-width: 768px) {
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+}

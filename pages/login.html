@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>התחברות - משחקים</title>
+    <link rel="stylesheet" href="../css/main-styles.css">
+    <link rel="stylesheet" href="../css/auth-styles.css">
+</head>
+<body>
+    <div class="auth-container">
+        <form id="loginForm" class="auth-form">
+            <h2>התחברות</h2>
+            <div class="form-group">
+                <label for="username">שם משתמש:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">סיסמה:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="error-message" id="errorMsg"></div>
+            <button type="submit">התחבר</button>
+            <p class="auth-link">אין לך חשבון? <a href="register.html">הירשם כאן</a></p>
+        </form>
+    </div>
+    <script src="../js/auth/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>משחקים</title>
+    <link rel="stylesheet" href="../css/main-styles.css">
+    <link rel="stylesheet" href="../css/games-styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container header-content">
+            <h1>משחקים</h1>
+            <div class="user-info">
+                <span id="userDisplay"></span>
+                <button id="logoutBtn">התנתק</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="user-stats">
+            <h2>הסטטיסטיקות שלי</h2>
+            <div id="userStats" class="stats-grid">
+                <!-- יתמלא דינמית -->
+            </div>
+        </section>
+
+        <section class="games-grid">
+            <article class="game-card" data-game="game1">
+                <h3>תופסת מכשולים</h3>
+                <div class="game-preview">
+                    <img src="../img/game1-preview.png" alt="תצוגה מקדימה של תופסת מכשולים">
+                </div>
+                <p>שחקו במשחק תופסת מאתגר עם מכשולים נעים!</p>
+                <a href="games/game1.html" class="play-button">שחק עכשיו</a>
+            </article>
+
+            <article class="game-card" data-game="game2">
+                <h3>משחק הזיכרון</h3>
+                <div class="game-preview">
+                    <img src="../img/game2-preview.png" alt="תצוגה מקדימה של משחק הזיכרון">
+                </div>
+                <p>בחנו את יכולת הזיכרון שלכם במשחק מאתגר!</p>
+                <a href="games/game2.html" class="play-button">שחק עכשיו</a>
+            </article>
+
+            <!-- משחקים בפיתוח -->
+            <article class="game-card disabled">
+                <h3>בקרוב - חידון טריוויה</h3>
+                <div class="game-preview coming-soon">
+                    <span>בפיתוח</span>
+                </div>
+                <p>בקרוב - חידון טריוויה מאתגר!</p>
+                <button disabled>בקרוב</button>
+            </article>
+        </section>
+    </main>
+
+    <script type="module" src="../js/games/gamesPage.js"></script>
+</body>
+</html>
