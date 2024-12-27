@@ -1,5 +1,5 @@
-import { userStorage } from '../storage/userStorage.js';
-import { gameStorage } from '../storage/gameStorage.js';
+import { userStorage } from '../storage/user-storage.js';
+import { gameStorage } from '../storage/game-storage.js';
 
 class ObstacleGame {
     constructor() {
