@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     background-color: #f0f0f0;
+    justify-content: center;
 }
 
 .game-header {
@@ -18,86 +19,27 @@
     flex: 1;
     position: relative;
     background-color: white;
-    margin: 1rem;
+    width: 100vmin;
+    height: 100vmin;
+    margin: 1rem auto;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-rows: repeat(21, 1fr);
+    grid-template-columns: repeat(21, 1fr);
+    max-width: 800px;
+    max-height: 800px;
 }
 
-.player {
-    width: 30px;
-    height: 30px;
-    background-color: #3498db;
-    border-radius: 50%;
-    position: absolute;
-    transition: transform 0.1s;
-    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
-    z-index: 2;
+.snake {
+  background-color: hsl(200, 100%, 50%);
+  border: .25vmin solid black;
 }
 
-.player::after {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    border: 2px solid #3498db;
-    border-radius: 50%;
-    animation: pulsePlayer 1.5s infinite;
-}
-
-@keyframes pulsePlayer {
-    0% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    50% {
-        transform: scale(1.2);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 0;
-    }
-}
-
-.obstacle {
-    position: absolute;
-    background-color: #e74c3c;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(231, 76, 60, 0.3);
-    transition: all 0.1s ease;
-}
-
-.obstacle::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, rgba(231, 76, 60, 0.8), rgba(231, 76, 60, 0.4));
-    border-radius: inherit;
-}
-
-.collectible {
-    width: 20px;
-    height: 20px;
-    background-color: #f1c40f;
-    border-radius: 50%;
-    position: absolute;
-    animation: float 2s infinite ease-in-out;
-    box-shadow: 0 0 15px rgba(241, 196, 15, 0.5);
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-5px);
-    }
+.food {
+  background-color: hsl(50, 100%, 50%);
+  border: .25vmin solid black;
 }
 
 .game-overlay {
@@ -156,7 +98,7 @@
     transform: translateY(0);
 }
 
-.score, .time, .level {
+.score {
     font-size: 1.2rem;
     font-weight: bold;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);

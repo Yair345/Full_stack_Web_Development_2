@@ -6,6 +6,16 @@
     <title>Games and Puzzles - Home</title>
     <link rel="stylesheet" href="css/main-styles.css" />
     <link rel="stylesheet" href="css/auth-styles.css" />
+    <script src="js/auth/login-logic.js" type="module"></script>
+    <script src="js/storage/user-storage.js" type="module"></script>
+    <!-- <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const userToken = localStorage.getItem("userToken");
+        if (!userToken) {
+          window.location.href = "pages/login.html";
+        }
+      });
+    </script> -->
   </head>
   <body>
     <div class="container">
@@ -61,8 +71,5 @@
         <p>© 2024 Game Center - All Rights Reserved</p>
       </footer>
     </div>
-
-    <script src="js/auth/login-logic.js"></script>
-    <script src="js/storage/user-storage.js"></script>
   </body>
 </html>

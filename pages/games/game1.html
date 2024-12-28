@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="he">
+<html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Snake</title>
@@ -9,26 +9,25 @@
   <body>
     <div class="game-container">
       <div class="game-header">
-        <div class="score">ניקוד: <span id="score">0</span></div>
-        <div class="time">זמן: <span id="time">60</span></div>
-        <div class="level">שלב: <span id="level">1</span></div>
+        <div class="score">Score: <span id="score">0</span></div>
+        <div class="score">High Score: <span id="highScore">0</span></div>
       </div>
 
-      <div id="gameArea" class="game-area">
-        <div id="player" class="player"></div>
-        <!-- מכשולים יתווספו דינמית -->
-      </div>
+      <div id="gameArea" class="game-area"></div>
 
       <div id="gameOverlay" class="game-overlay hidden">
         <div class="overlay-content">
-          <h2>המשחק נגמר!</h2>
-          <p>הניקוד הסופי שלך: <span id="finalScore">0</span></p>
-          <button id="restartBtn">שחק שוב</button>
-          <a href="../games.html" class="menu-button">חזרה לתפריט</a>
+          <h2>Game Over!</h2>
+          <p>Your Final Score: <span id="finalScore">0</span></p>
+          <p>Your High Score: <span id="finalHighScore">0</span></p>
+          <button id="restartBtn" onclick="location.href='../games/game1.html'">Play Again</button>
+          <a href="../games.html" class="menu-button">Back to Menu</a>
         </div>
       </div>
     </div>
 
-    <script type="module" src="../../js/games/game1.js"></script>
+    <script type="module" defer src="../../js/games/game1.js"></script>
+    <script type="module" defer src="../../js/storage/games-storage.js"></script>
+    <script type="module" defer src="../../js/storage/user-storage.js"></script>
   </body>
 </html>
