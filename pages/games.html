@@ -1,62 +1,62 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="he">
+<html dir="ltr" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>משחקים</title>
+    <title>Games</title>
     <link rel="stylesheet" href="../css/main-styles.css">
     <link rel="stylesheet" href="../css/games-styles.css">
 </head>
 <body>
     <header class="main-header">
         <div class="container header-content">
-            <h1>משחקים</h1>
+            <h1>Games</h1>
             <div class="user-info">
                 <span id="userDisplay"></span>
-                <button id="logoutBtn">התנתק</button>
+                <button id="logoutBtn">Logout</button>
             </div>
         </div>
     </header>
 
     <main class="container">
         <section class="user-stats">
-            <h2>הסטטיסטיקות שלי</h2>
+            <h2>My Statistics</h2>
             <div id="userStats" class="stats-grid">
-                <!-- יתמלא דינמית -->
+                <!-- Will be dynamically populated -->
             </div>
         </section>
 
         <section class="games-grid">
             <article class="game-card" data-game="game1">
-                <h3>תופסת מכשולים</h3>
+                <h3>Snake</h3>
                 <div class="game-preview">
-                    <img src="../img/game1-preview.png" alt="תצוגה מקדימה של תופסת מכשולים">
+                    <img src="../img/game1-preview.png" alt="Preview of Snake">
                 </div>
-                <p>שחקו במשחק תופסת מאתגר עם מכשולים נעים!</p>
-                <a href="games/game1.html" class="play-button">שחק עכשיו</a>
+                <p>Play the classic Snake game and challenge yourself to collect as much food as possible!</p>
+                <a href="games/game1.html" class="play-button">Play Now</a>
             </article>
 
             <article class="game-card" data-game="game2">
-                <h3>משחק הזיכרון</h3>
+                <h3>Flappy Bird</h3>
                 <div class="game-preview">
-                    <img src="../img/game2-preview.png" alt="תצוגה מקדימה של משחק הזיכרון">
+                    <img src="../img/game2-preview.jpeg" alt="Preview of Flappy Bird">
                 </div>
-                <p>בחנו את יכולת הזיכרון שלכם במשחק מאתגר!</p>
-                <a href="games/game2.html" class="play-button">שחק עכשיו</a>
+                <p>Guide the Flappy Bird through obstacles and try to achieve the highest score!</p>
+                <a href="games/game2.html" class="play-button">Play Now</a>
             </article>
 
-            <!-- משחקים בפיתוח -->
+            <!-- Games in development -->
             <article class="game-card disabled">
-                <h3>בקרוב - חידון טריוויה</h3>
+                <h3>Coming Soon - Trivia Quiz</h3>
                 <div class="game-preview coming-soon">
-                    <span>בפיתוח</span>
+                    <span>In Development</span>
                 </div>
-                <p>בקרוב - חידון טריוויה מאתגר!</p>
-                <button disabled>בקרוב</button>
+                <p>Coming soon - a challenging trivia quiz!</p>
+                <button disabled>Coming Soon</button>
             </article>
         </section>
     </main>
 
-    <script type="module" src="../js/games/gamesPage.js"></script>
+    <script type="module" src="../js/pages/gamesPage.js"></script>
 </body>
 </html>

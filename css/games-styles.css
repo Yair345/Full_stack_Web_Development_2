@@ -11,6 +11,10 @@
     align-items: center;
 }
 
+.main-header h1 {
+    color: #ecf0f1;
+}
+
 .user-info {
     display: flex;
     align-items: center;
@@ -47,6 +51,32 @@
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
+.stat-card h3 {
+    margin: 0 0 15px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    color: #666;
+}
+
+.stat-value {
+    font-weight: bold;
+}
+
+.no-stats {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+}
+
 .games-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -60,6 +90,9 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     overflow: hidden;
     transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .game-card:hover:not(.disabled) {
@@ -88,6 +121,7 @@
 .game-card p {
     padding: 0 1rem 1rem;
     color: #666;
+    flex-grow: 1;
 }
 
 .play-button {
@@ -100,6 +134,7 @@
     margin: 1rem;
     border-radius: 4px;
     transition: background-color 0.2s;
+    margin-top: auto;
 }
 
 .play-button:hover {

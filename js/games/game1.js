@@ -65,6 +65,10 @@ function updateScore() {
 
 function getHighScore(userId) {
     const highScores = gameStorage.getUserScores(userId)[GAME_ID]
-    const userHighScore = Math.max(...highScores.map(s => s.score))
-    return userHighScore ? userHighScore : 0
+    try {
+        const userHighScore = Math.max(...highScores.map(s => s.score))
+        return userHighScore ? userHighScore : 0
+    } catch (e) {
+        return 0
+    }
 }
