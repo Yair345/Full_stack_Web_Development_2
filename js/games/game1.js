@@ -58,12 +58,13 @@ function checkDeath() {
 function updateScore() {
     scoreDisplay.textContent = playerScore
     if (currentUser) {
-        highScoreDisplay.textContent = getHighScore(currentUser.id)
+        let high = getHighScore(currentUser.id)
+        highScoreDisplay.textContent = high > playerScore ? high : playerScore
     }
 }
 
 function getHighScore(userId) {
-    const highScores = gameStorage.getGameHighScores(GAME_ID)
-    const userHighScore = highScores.find(score => score.userId === userId)
-    return userHighScore ? userHighScore.score : 0
+    const highScores = gameStorage.getUserScores(userId)[GAME_ID]
+    const userHighScore = Math.max(...highScores.map(s => s.score))
+    return userHighScore ? userHighScore : 0
 }

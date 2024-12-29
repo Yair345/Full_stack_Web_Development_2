@@ -6,16 +6,21 @@
     <title>Games and Puzzles - Home</title>
     <link rel="stylesheet" href="css/main-styles.css" />
     <link rel="stylesheet" href="css/auth-styles.css" />
-    <script src="js/auth/login-logic.js" type="module"></script>
+    <script src="js/auth/login.js" type="module"></script>
     <script src="js/storage/user-storage.js" type="module"></script>
-    <!-- <script>
+    <script type="module">
+      import { userStorage } from "./js/storage/user-storage.js";
       window.addEventListener("DOMContentLoaded", () => {
-        const userToken = localStorage.getItem("userToken");
-        if (!userToken) {
+        if (!userStorage.isUserLoggedIn()) {
           window.location.href = "pages/login.html";
         }
       });
-    </script> -->
+
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        userStorage.logout();
+        window.location.href = "pages/login.html";
+      });
+    </script>
   </head>
   <body>
     <div class="container">

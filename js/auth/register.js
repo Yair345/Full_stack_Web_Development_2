@@ -1,4 +1,6 @@
-import { userStorage } from '../storage/userStorage.js';
+import { userStorage } from '../storage/user-storage.js';
+import { generateSHA256Hash } from '../utils/crypto.js';
+
 
 document.getElementById('registerForm').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -13,29 +15,32 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     try {
         // Validate password match
         if (password !== confirmPassword) {
-            throw new Error('הסיסמאות אינן תואמות');
+            throw new Error('Passwords do not match');
         }
 
         // Validate password strength
         if (password.length < 6) {
-            throw new Error('הסיסמה חייבת להכיל לפחות 6 תווים');
+            throw new Error('Password must contain at least 6 characters');
         }
 
         // Validate username
         if (username.length < 3) {
-            throw new Error('שם המשתמש חייב להכיל לפחות 3 תווים');
+            throw new Error('Username must contain at least 3 characters');
         }
 
         // Validate email format
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            throw new Error('כתובת האימייל אינה תקינה');
+            throw new Error('Invalid email address');
         }
+
+        // Hash the password
+        const hashedPassword = await generateSHA256Hash(password);
 
         // Create user
         userStorage.addUser({
             username,
-            password, // In a real app, you'd hash the password
+            password: hashedPassword,
             email,
             fullname
         });

@@ -3,6 +3,7 @@ class UserStorage {
         this.storageKey = 'gameUsers';
         this.sessionKey = 'currentUser';
         this.loginAttemptsKey = 'loginAttempts';
+        this.userTokenKey = 'userToken';
         this.initStorage();
     }
 
@@ -27,7 +28,7 @@ class UserStorage {
     addUser(user) {
         const users = this.getAllUsers();
         if (this.getUserByUsername(user.username)) {
-            throw new Error('שם המשתמש כבר קיים במערכת');
+            throw new Error('username already exists');
         }
         users.push({
             ...user,
@@ -43,7 +44,7 @@ class UserStorage {
         const users = this.getAllUsers();
         const index = users.findIndex(user => user.username === username);
         if (index === -1) return false;
-        
+
         users[index] = { ...users[index], ...updates };
         localStorage.setItem(this.storageKey, JSON.stringify(users));
         return true;
@@ -54,7 +55,9 @@ class UserStorage {
             ...user,
             sessionStart: new Date().toISOString()
         };
+        const token = this.generateToken(user.username);
         localStorage.setItem(this.sessionKey, JSON.stringify(sessionUser));
+        localStorage.setItem(this.userTokenKey, token);
         this.updateUser(user.username, { lastLogin: new Date().toISOString() });
     }
 
@@ -65,6 +68,7 @@ class UserStorage {
 
     logout() {
         localStorage.removeItem(this.sessionKey);
+        localStorage.removeItem(this.userTokenKey); // Clear token on logout
     }
 
     recordLoginAttempt(username) {
@@ -114,6 +118,14 @@ class UserStorage {
 
         return attempts[username].blocked;
     }
+
+    isUserLoggedIn() {
+        return !!localStorage.getItem(this.userTokenKey);
+    }    
+
+    generateToken(username) {
+        return `${username}-${Date.now()}`; // Simplified token generation
+    }    
 }
 
 export const userStorage = new UserStorage();
