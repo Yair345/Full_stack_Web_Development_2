@@ -1,36 +1,71 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="he">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>משחק הזיכרון</title>
-    <link rel="stylesheet" href="../../css/main-styles.css">
+    <title>Tic Tac Toe Game</title>
+    <link rel="stylesheet" href="../../css/main-styles.css" />
     <link rel="stylesheet" href="../../css/games/game2-styles.css">
 </head>
 <body>
-    <div class="game-container">
-        <div class="game-header">
-            <div class="moves">מהלכים: <span id="moves">0</span></div>
-            <div class="pairs">זוגות: <span id="pairs">0</span>/<span id="totalPairs">0</span></div>
-            <div class="time">זמן: <span id="time">00:00</span></div>
-        </div>
-
-        <div id="gameBoard" class="game-board">
-            <!-- הקלפים יתווספו דינמית -->
-        </div>
-
-        <div id="gameOverlay" class="game-overlay hidden">
-            <div class="overlay-content">
-                <h2>כל הכבוד!</h2>
-                <p>סיימת את המשחק ב-<span id="finalMoves">0</span> מהלכים</p>
-                <p>זמן: <span id="finalTime">00:00</span></p>
-                <p>ניקוד: <span id="finalScore">0</span></p>
-                <button id="restartBtn">שחק שוב</button>
-                <a href="../games.html" class="menu-button">חזרה לתפריט</a>
+    <div class="container">
+        <h1>Tic Tac Toe</h1>
+        
+        <!-- Game Info Section -->
+        <div class="game-info">
+            <div class="difficulty-selector">
+                <label for="difficulty">Select Difficulty:</label>
+                <select id="difficulty">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+            <div class="timer">Time: <span id="game-timer">00:00</span></div>
+            <div class="score">
+                Wins: <span id="wins">0</span>
+                Losses: <span id="losses">0</span>
+                Ties: <span id="ties">0</span>
             </div>
         </div>
-    </div>
 
-    <script type="module" src="../../js/games/game2.js"></script>
+        <!-- Game Board -->
+        <div class="board" id="board">
+            <div class="cell" data-cell-index="0"></div>
+            <div class="cell" data-cell-index="1"></div>
+            <div class="cell" data-cell-index="2"></div>
+            <div class="cell" data-cell-index="3"></div>
+            <div class="cell" data-cell-index="4"></div>
+            <div class="cell" data-cell-index="5"></div>
+            <div class="cell" data-cell-index="6"></div>
+            <div class="cell" data-cell-index="7"></div>
+            <div class="cell" data-cell-index="8"></div>
+        </div>
+
+        <!-- Game Controls -->
+        <div class="controls">
+            <button id="start-btn" class="btn">Start Game</button>
+            <button id="reset-btn" class="btn">Reset Board</button>
+        </div>
+
+        <!-- Game Status -->
+        <div id="status-message" class="status"></div>
+
+        <!-- Game History Table -->
+        <table class="history-table">
+            <thead>
+                <tr>
+                    <th>Game</th>
+                    <th>Difficulty</th>
+                    <th>Result</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+            <tbody id="history-body">
+                <!-- Game history will be populated here -->
+            </tbody>
+        </table>
+    </div>
+    <script src="../../js/games/game2.js"></script>
 </body>
 </html>
