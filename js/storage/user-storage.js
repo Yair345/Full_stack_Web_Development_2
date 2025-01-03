@@ -34,7 +34,6 @@ class UserStorage {
             ...user,
             id: Date.now(),
             created: new Date().toISOString(),
-            scores: [],
             lastLogin: null
         });
         localStorage.setItem(this.storageKey, JSON.stringify(users));

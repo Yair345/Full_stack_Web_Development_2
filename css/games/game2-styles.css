@@ -136,46 +136,6 @@ h1 {
     min-height: 4rem;
 }
 
-/* Scrollable Game History Table */
-.history-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 2rem;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.history-table-container {
-    max-height: 250px;
-    overflow-y: auto;
-    margin-top: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.history-table th,
-.history-table td {
-    padding: 1rem;
-    border: 1px solid #ddd;
-    text-align: center;
-}
-
-.history-table th {
-    background-color: #f5f5f5;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-}
-
-.history-table tr:nth-child(even) {
-    background-color: #fafafa;
-}
-
-.history-table tr:hover {
-    background-color: #f1f1f1;
-}
-
 /* Animations */
 @keyframes fadeIn {
     from { opacity: 0; }

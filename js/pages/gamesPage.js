@@ -90,36 +90,59 @@ function createStatItem(label, value) {
 function createGameStatCard(gameId, gameStats) {
     const card = document.createElement('div');
     card.className = 'stat-card';
-    
-    // Create and add game title
+
+    // Game Title
     const gameTitle = document.createElement('h3');
     gameTitle.textContent = gameId.charAt(0).toUpperCase() + gameId.slice(1);
     card.appendChild(gameTitle);
 
-    // Add stat items
-    const stats = [
-        {
-            label: 'Games Played:',
-            value: gameStats.gamesPlayed
-        },
-        {
-            label: 'High Score:',
-            value: gameStats.highScore.toLocaleString()
-        },
-        {
-            label: 'Average Score:',
-            value: Math.round(gameStats.averageScore).toLocaleString()
-        },
-        {
-            label: 'Last Played:',
-            value: new Date(gameStats.lastPlayed).toLocaleDateString()
-        }
-    ];
+    if (gameId === 'snake') {
+        // Snake stats
+        const statList = [
+            { label: 'Games Played:', value: gameStats.gamesPlayed },
+            { label: 'High Score:', value: gameStats.highScore.toLocaleString() },
+            { label: 'Average Score:', value: Math.round(gameStats.averageScore).toLocaleString() },
+            { label: 'Last Played:', value: gameStats.lastPlayed ? new Date(gameStats.lastPlayed).toLocaleDateString() : 'N/A' }
+        ];
 
-    stats.forEach(stat => {
-        const statItem = createStatItem(stat.label, stat.value);
-        card.appendChild(statItem);
-    });
+        statList.forEach(stat => {
+            const statItem = createStatItem(stat.label, stat.value);
+            card.appendChild(statItem);
+        });
+    } else if (gameId === 'Tic-Tac-Toe') {
+        // Tic-Tac-Toe stats per difficulty
+        Object.entries(gameStats).forEach(([difficulty, stats]) => {
+            const difficultyTitle = document.createElement('h4');
+            difficultyTitle.textContent = `${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}:`;
+            card.appendChild(difficultyTitle);
+
+            const statList = [
+                { label: 'Games Played:', value: stats.gamesPlayed },
+                { label: 'Wins:', value: stats.wins },
+                { label: 'Losses:', value: stats.losses },
+                { label: 'Ties:', value: stats.ties },
+                { label: 'Last Played:', value: stats.lastPlayed ? new Date(stats.lastPlayed).toLocaleDateString() : 'N/A' }
+            ];
+
+            statList.forEach(stat => {
+                const statItem = createStatItem(stat.label, stat.value);
+                card.appendChild(statItem);
+            });
+        });
+    } else {
+        // Generic case for other games
+        const genericStats = [
+            { label: 'Games Played:', value: gameStats.gamesPlayed || 0 },
+            { label: 'High Score:', value: gameStats.highScore ? gameStats.highScore.toLocaleString() : 'N/A' },
+            { label: 'Average Score:', value: gameStats.averageScore ? Math.round(gameStats.averageScore).toLocaleString() : 'N/A' },
+            { label: 'Last Played:', value: gameStats.lastPlayed ? new Date(gameStats.lastPlayed).toLocaleDateString() : 'N/A' }
+        ];
+
+        genericStats.forEach(stat => {
+            const statItem = createStatItem(stat.label, stat.value);
+            card.appendChild(statItem);
+        });
+    }
 
     return card;
 }

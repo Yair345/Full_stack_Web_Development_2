@@ -1,3 +1,10 @@
+import { userStorage } from '../storage/user-storage.js';
+import { gameStorage } from '../storage/games-storage.js';
+
+const GAME_ID = 'Tic-Tac-Toe';
+const currentUser = userStorage.getCurrentUser();
+
+
 // Game state
 const gameState = {
     board: Array(9).fill(''),
@@ -192,6 +199,7 @@ function checkWinner() {
         updateScores(result);
         highlightWinningCombination();
         updateGameHistory(result, duration);
+        updateGameStorage(result === 'X' ? 1 : result === 'O' ? -1 : 0, difficultySelect.value);
         
         return true;
     }
@@ -271,6 +279,12 @@ function updateGameHistory(result, duration) {
     `;
     
     historyBody.appendChild(row);
+}
+
+function updateGameStorage(result, difficulty) {
+    if (currentUser) {
+        gameStorage.saveScore(currentUser.id, GAME_ID, result, difficulty);
+    }
 }
 
 // Initialize the game
