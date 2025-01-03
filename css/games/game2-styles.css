@@ -162,8 +162,4 @@ h1 {
         flex-direction: column;
         align-items: center;
     }
-    
-    .history-table-container {
-        max-height: 200px;
-    }
 }

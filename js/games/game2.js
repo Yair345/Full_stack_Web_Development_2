@@ -16,8 +16,7 @@ const gameState = {
         wins: 0,
         losses: 0,
         ties: 0
-    },
-    gameHistory: []
+    }
 };
 
 // DOM Elements
@@ -28,7 +27,6 @@ const startButton = document.getElementById('start-btn');
 const resetButton = document.getElementById('reset-btn');
 const statusMessage = document.getElementById('status-message');
 const gameTimer = document.getElementById('game-timer');
-const historyBody = document.getElementById('history-body');
 
 // Winning combinations
 const winningCombinations = [
@@ -194,11 +192,9 @@ function checkWinner() {
         clearInterval(gameState.timerInterval);
         
         const endTime = new Date();
-        const duration = Math.floor((endTime - gameState.startTime) / 1000);
         
         updateScores(result);
         highlightWinningCombination();
-        updateGameHistory(result, duration);
         updateGameStorage(result === 'X' ? 1 : result === 'O' ? -1 : 0, difficultySelect.value);
         
         return true;
@@ -257,28 +253,6 @@ function updateScores(result) {
     document.getElementById('wins').textContent = gameState.scores.wins;
     document.getElementById('losses').textContent = gameState.scores.losses;
     document.getElementById('ties').textContent = gameState.scores.ties;
-}
-
-// Update Game History Function
-function updateGameHistory(result, duration) {
-    const historyEntry = {
-        gameNumber: gameState.gameHistory.length + 1,
-        difficulty: difficultySelect.value,
-        result: result === 'X' ? 'Win' : result === 'O' ? 'Loss' : 'Tie',
-        duration: `${Math.floor(duration / 60)}:${(duration % 60).toString().padStart(2, '0')}`
-    };
-    
-    gameState.gameHistory.push(historyEntry);
-    
-    const row = document.createElement('tr');
-    row.innerHTML = `
-        <td>${historyEntry.gameNumber}</td>
-        <td>${historyEntry.difficulty}</td>
-        <td>${historyEntry.result}</td>
-        <td>${historyEntry.duration}</td>
-    `;
-    
-    historyBody.appendChild(row);
 }
 
 function updateGameStorage(result, difficulty) {

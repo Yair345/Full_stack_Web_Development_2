@@ -136,6 +136,26 @@ class GameStorage {
     getAllScores() {
         return JSON.parse(localStorage.getItem(this.storageKey));
     }
+
+    countTotalGamesPlayed(userId) {
+        let totalGamesPlayed = 0;
+        
+        const gameScores = this.getUserScores(userId);
+
+        // Count games played for Snake
+        if (gameScores.snake) {
+            totalGamesPlayed += gameScores.snake.length;
+        }
+    
+        // Count games played for Tic-Tac-Toe by summing games across all difficulties
+        if (gameScores.ticTacToe) {
+            Object.values(gameScores.ticTacToe).forEach(difficultyScores => {
+                totalGamesPlayed += difficultyScores.length;
+            });
+        }
+    
+        return totalGamesPlayed;
+    }
 }
 
 export const gameStorage = new GameStorage();

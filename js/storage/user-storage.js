@@ -124,6 +124,11 @@ class UserStorage {
 
     generateToken(username) {
         return `${username}-${Date.now()}`; // Simplified token generation
+    }
+
+    getLastLogin(username) {
+        const user = this.getUserByUsername(username);
+        return user ? user.lastLogin : null;
     }    
 }
 

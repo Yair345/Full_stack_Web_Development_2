@@ -10,6 +10,7 @@
     <script src="js/storage/user-storage.js" type="module"></script>
     <script type="module">
       import { userStorage } from "./js/storage/user-storage.js";
+      import { gameStorage } from "./js/storage/games-storage.js";
       window.addEventListener("DOMContentLoaded", () => {
         if (!userStorage.isUserLoggedIn()) {
           window.location.href = "pages/login.html";
@@ -20,6 +21,12 @@
         userStorage.logout();
         window.location.href = "pages/login.html";
       });
+
+      const currentUser = userStorage.getCurrentUser();
+      document.getElementById("gamesPlayed").textContent =
+        gameStorage.countTotalGamesPlayed(currentUser.id);
+      const date = new Date(currentUser.lastLogin);
+      document.getElementById("lastLogin").textContent = date.toDateString();
     </script>
   </head>
   <body>
@@ -33,7 +40,6 @@
           >
             Games
           </button>
-          <button id="profileBtn">My Profile</button>
           <button id="logoutBtn">Logout</button>
         </nav>
       </header>
@@ -45,8 +51,7 @@
             <h3>Your Statistics</h3>
             <div id="userStats">
               <p>Games Played: <span id="gamesPlayed">0</span></p>
-              <p>Total Score: <span id="totalScore">0</span></p>
-              <p>Total Play Time: <span id="totalTime">0</span> minutes</p>
+              <p>Last Login: <span id="lastLogin">0</span></p>
             </div>
           </div>
         </section>
@@ -65,7 +70,7 @@
               class="game-card"
               onclick="window.location.href='pages/games/game2.html'"
             >
-              <h3>Game 2</h3>
+              <h3>Tic Tac Toe</h3>
               <p>Challenging logic game</p>
             </div>
           </div>
@@ -73,7 +78,7 @@
       </main>
 
       <footer>
-        <p>© 2024 Game Center - All Rights Reserved</br>Yair Lasri & Jeremie Turjeman</p>
+        <p>© 2024 Game Center - All Rights Reserved</br>Yair Lasri & Jeremie Tordjman</p>
       </footer>
     </div>
   </body>
