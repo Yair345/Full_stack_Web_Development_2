@@ -80,15 +80,7 @@ class GameStorage {
 
         Object.entries(scores).forEach(([gameId, gameScores]) => {
             stats[gameId] = this.calculateGameStats(gameId, gameScores);
-            
-            /* stats[gameId] = {
-                gamesPlayed: gameScores.length,
-                highScore: Math.max(...gameScores.map(s => s.score)),
-                averageScore: gameScores.reduce((sum, s) => sum + s.score, 0) / gameScores.length,
-                lastPlayed: gameScores[gameScores.length - 1].timestamp
-            }; */
         });
-        console.log('stats', stats);
         return stats;
     }
 

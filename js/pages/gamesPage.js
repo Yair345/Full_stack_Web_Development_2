@@ -61,6 +61,14 @@ function initUserStats() {
 
     // Get user stats from game storage
     const stats = gameStorage.getUserStats(currentUser.id);
+    
+    if (Object.keys(stats).length === 0) {
+        const noStatsMessage = document.createElement('p');
+        noStatsMessage.className = 'no-stats';
+        noStatsMessage.textContent = 'No statistics available';
+        statsContainer.appendChild(noStatsMessage);
+        return;
+    }
 
     // Create stats cards for each game
     Object.entries(stats).forEach(([gameId, gameStats]) => {

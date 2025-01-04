@@ -25,7 +25,7 @@
       const currentUser = userStorage.getCurrentUser();
       document.getElementById("gamesPlayed").textContent =
         gameStorage.countTotalGamesPlayed(currentUser.id);
-      const date = new Date(currentUser.lastLogin);
+      const date = new Date(currentUser.lastLogin ?? Date.now());
       document.getElementById("lastLogin").textContent = date.toDateString();
     </script>
   </head>
