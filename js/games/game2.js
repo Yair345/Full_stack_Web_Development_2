@@ -196,6 +196,10 @@ function checkWinner() {
         updateScores(result);
         highlightWinningCombination();
         updateGameStorage(result === 'X' ? 1 : result === 'O' ? -1 : 0, difficultySelect.value);
+
+        setTimeout(() => {
+            resetBoard();
+        }, 1500);
         
         return true;
     }
@@ -260,6 +264,11 @@ function updateGameStorage(result, difficulty) {
         gameStorage.saveScore(currentUser.id, GAME_ID, result, difficulty);
     }
 }
+
+const backButton = document.getElementById('back-btn');
+backButton.addEventListener('click', () => {
+    window.location.href = '../games.html'; 
+});
 
 // Initialize the game
 resetBoard();

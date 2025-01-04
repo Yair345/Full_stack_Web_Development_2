@@ -9,16 +9,18 @@
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #ece9e6, #ffffff);
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding:0;
+    overflow: hidden;
 }
 
 /* Container for Game */
 .container {
     max-width: 700px;
-    margin: 3rem auto;
+    max-height: 800px;
     padding: 2rem;
     text-align: center;
     background-color: #fff;
@@ -106,6 +108,13 @@ h1 {
     transition: all 0.3s ease;
 }
 
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
 #start-btn {
     background-color: #2196f3;
     color: white;
@@ -113,6 +122,11 @@ h1 {
 
 #reset-btn {
     background-color: #ff5252;
+    color: white;
+}
+
+#back-btn {
+    background-color: #6c757d;
     color: white;
 }
 
@@ -129,11 +143,9 @@ h1 {
 .status {
     background-color: #f1f1f1;
     padding: 1rem;
-    margin: 2rem 0;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     font-size: 1.2rem;
-    min-height: 4rem;
 }
 
 /* Animations */
