@@ -85,7 +85,6 @@ class GameStorage {
     }
 
     calculateGameStats(gameId, gameScores) {
-        console.log('gameScores', gameScores);
         if (gameId === 'snake') {
             const scores = gameScores || [];
             const gamesPlayed = scores.length;
@@ -147,6 +146,68 @@ class GameStorage {
         }
     
         return totalGamesPlayed;
+    }
+
+    getSummedStats() {
+        const allUsers = this.getAllUsers(); // Assuming this method exists and returns a list of user IDs
+        const summedStats = {
+            snake: {
+                totalGamesPlayed: 0,
+                totalHighScore: 0,
+                totalScore: 0,
+                totalAverageScore: 0,
+                lastPlayed: null // We'll calculate the latest timestamp
+            },
+            'Tic-Tac-Toe': {}
+        };
+    
+        allUsers.forEach(userId => {
+            const userStats = this.getUserStats(userId);
+    
+            // Summing Snake game stats
+            if (userStats.snake) {
+                const { gamesPlayed, highScore, averageScore, lastPlayed } = userStats.snake;
+    
+                summedStats.snake.totalGamesPlayed += gamesPlayed;
+                summedStats.snake.totalHighScore = Math.max(summedStats.snake.totalHighScore, highScore);
+                summedStats.snake.totalScore += averageScore * gamesPlayed; // Accumulate total scores
+            }
+    
+            // Summing Tic-Tac-Toe stats
+            if (userStats['Tic-Tac-Toe']) {
+                Object.entries(userStats['Tic-Tac-Toe']).forEach(([difficulty, stats]) => {
+                    if (!summedStats['Tic-Tac-Toe'][difficulty]) {
+                        summedStats['Tic-Tac-Toe'][difficulty] = {
+                            totalGamesPlayed: 0,
+                            totalWins: 0,
+                            totalLosses: 0,
+                            totalTies: 0,
+                            lastPlayed: null
+                        };
+                    }
+    
+                    const { gamesPlayed, wins, losses, ties, lastPlayed } = stats;
+    
+                    summedStats['Tic-Tac-Toe'][difficulty].totalGamesPlayed += gamesPlayed;
+                    summedStats['Tic-Tac-Toe'][difficulty].totalWins += wins;
+                    summedStats['Tic-Tac-Toe'][difficulty].totalLosses += losses;
+                    summedStats['Tic-Tac-Toe'][difficulty].totalTies += ties;
+                });
+            }
+        });
+    
+        // Calculate the overall average score for Snake
+        if (summedStats.snake.totalGamesPlayed > 0) {
+            summedStats.snake.totalAverageScore =
+                summedStats.snake.totalScore / summedStats.snake.totalGamesPlayed;
+        }
+    
+        return summedStats;
+    }
+
+    getAllUsers() {
+        const scores = this.getAllScores();
+        return Object.keys(scores);
     }
 }
 

@@ -155,8 +155,102 @@ function createGameStatCard(gameId, gameStats) {
     return card;
 }
 
+function initAllUserStats() {
+    const statsContainer = document.getElementById('allStats'); // The container for statistics
+    const allUsers = userStorage.getAllUsers(); // Assuming this method gets all user IDs
+
+    // Clear existing content
+    while (statsContainer.firstChild) {
+        statsContainer.removeChild(statsContainer.firstChild);
+    }
+
+    if (!allUsers || allUsers.length === 0) {
+        const noStatsMessage = document.createElement('p');
+        noStatsMessage.className = 'no-stats';
+        noStatsMessage.textContent = 'No users found to display statistics.';
+        statsContainer.appendChild(noStatsMessage);
+        return;
+    }
+
+    // Get aggregated stats for all users
+    const summedStats = gameStorage.getSummedStats(); // Assuming the getSummedStats function from earlier is implemented
+
+    if (!summedStats || Object.keys(summedStats).length === 0) {
+        const noStatsMessage = document.createElement('p');
+        noStatsMessage.className = 'no-stats';
+        noStatsMessage.textContent = 'No statistics available for any user.';
+        statsContainer.appendChild(noStatsMessage);
+        return;
+    }
+
+    // Create stats cards for each game
+    Object.entries(summedStats).forEach(([gameId, gameStats]) => {
+        const statCard = createGameStatCardForAllUsers(gameId, gameStats);
+        statsContainer.appendChild(statCard);
+    });
+}
+
+function createGameStatCardForAllUsers(gameId, gameStats) {
+    const card = document.createElement('div');
+    card.className = 'stat-card';
+
+    // Game Title
+    const gameTitle = document.createElement('h3');
+    gameTitle.textContent = gameId.charAt(0).toUpperCase() + gameId.slice(1);
+    card.appendChild(gameTitle);
+
+    if (gameId === 'snake') {
+        // Snake stats
+        const statList = [
+            { label: 'Total Games Played:', value: gameStats.totalGamesPlayed },
+            { label: 'Highest Score:', value: gameStats.totalHighScore.toLocaleString() },
+            { label: 'Average Score:', value: Math.round(gameStats.totalAverageScore).toLocaleString() },
+        ];
+
+        statList.forEach(stat => {
+            const statItem = createStatItem(stat.label, stat.value);
+            card.appendChild(statItem);
+        });
+    } else if (gameId === 'Tic-Tac-Toe') {
+        // Tic-Tac-Toe stats per difficulty
+        Object.entries(gameStats).forEach(([difficulty, stats]) => {
+            const difficultyTitle = document.createElement('h4');
+            difficultyTitle.textContent = `${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}:`;
+            card.appendChild(difficultyTitle);
+
+            const statList = [
+                { label: 'Total Games Played:', value: stats.totalGamesPlayed },
+                { label: 'Total Wins:', value: stats.totalWins },
+                { label: 'Total Losses:', value: stats.totalLosses },
+                { label: 'Total Ties:', value: stats.totalTies },
+            ];
+
+            statList.forEach(stat => {
+                const statItem = createStatItem(stat.label, stat.value);
+                card.appendChild(statItem);
+            });
+        });
+    } else {
+        // Generic case for other games
+        const genericStats = [
+            { label: 'Total Games Played:', value: gameStats.totalGamesPlayed || 0 },
+            { label: 'Highest Score:', value: gameStats.totalHighScore ? gameStats.totalHighScore.toLocaleString() : 'N/A' },
+            { label: 'Average Score:', value: gameStats.totalAverageScore ? Math.round(gameStats.totalAverageScore).toLocaleString() : 'N/A' },
+        ];
+
+        genericStats.forEach(stat => {
+            const statItem = createStatItem(stat.label, stat.value);
+            card.appendChild(statItem);
+        });
+    }
+
+    return card;
+}
+
+
 // Add event listener for page load
 document.addEventListener('DOMContentLoaded', initUserStats);
+document.addEventListener('DOMContentLoaded', initAllUserStats);
 
 // Function to refresh stats
 function refreshStats() {
