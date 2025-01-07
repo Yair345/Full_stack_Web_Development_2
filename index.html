@@ -23,6 +23,9 @@
       });
 
       const currentUser = userStorage.getCurrentUser();
+      document.getElementById("userName").textContent =
+      currentUser.fullname;
+
       document.getElementById("gamesPlayed").textContent =
         gameStorage.countTotalGamesPlayed(currentUser.id);
       const date = new Date(currentUser.lastLogin ?? Date.now());

@@ -157,7 +157,7 @@ function createGameStatCard(gameId, gameStats) {
 
 function initAllUserStats() {
     const statsContainer = document.getElementById('allStats'); // The container for statistics
-    const allUsers = userStorage.getAllUsers(); // Assuming this method gets all user IDs
+    const allUsers = userStorage.getAllUsers();
 
     // Clear existing content
     while (statsContainer.firstChild) {

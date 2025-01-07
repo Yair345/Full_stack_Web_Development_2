@@ -42,7 +42,6 @@ class GameStorage {
             });
         }
     
-        console.log('scores', scores);
         localStorage.setItem(this.storageKey, JSON.stringify(scores));
     }
     
