@@ -45,32 +45,9 @@ class GameStorage {
         localStorage.setItem(this.storageKey, JSON.stringify(scores));
     }
     
-
     getUserScores(userId) {
         const scores = this.getAllScores();
         return scores[userId] || {};
-    }
-
-    getGameHighScores(gameId, limit = 10) {
-        const scores = this.getAllScores();
-        let allGameScores = [];
-
-        // Collect all scores for this game
-        Object.entries(scores).forEach(([userId, userScores]) => {
-            if (userScores[gameId]) {
-                userScores[gameId].forEach(score => {
-                    allGameScores.push({
-                        userId,
-                        ...score
-                    });
-                });
-            }
-        });
-
-        // Sort by score (descending) and take top N
-        return allGameScores
-            .sort((a, b) => b.score - a.score)
-            .slice(0, limit);
     }
 
     getUserStats(userId) {
